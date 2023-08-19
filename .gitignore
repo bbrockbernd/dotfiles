@@ -1,0 +1,4 @@
+.cfg
+.bash*
+.cache/
+**/__pycache__/
