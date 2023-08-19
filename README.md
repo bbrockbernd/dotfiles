@@ -1,5 +1,11 @@
 # dotfiles
 
+## Dotfiles repo setup
+- Add to .zshrc: alias dotfiles='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+- run: echo ".cfg" >> .gitignore
+- clone this repo: git clone --bare https://github.com/bbrockbernd/dotfiles.git $HOME/.cfg
+- dotfiles checkout -f
+
 ## Vmware setup
 ### Install
 - Use ext4 file system
