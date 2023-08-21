@@ -72,7 +72,20 @@ ZSH_THEME="eastwood"
 # Add wisely, as too many plugins slow down shell startup.
 
 
-plugins=(git kubectl history emoji encode64 history z)
+plugins=(
+	fzf
+	git 
+	history-substring-search
+	colored-man-pages
+	zsh-autosuggestions
+	zsh-syntax-highlighting
+	z
+	#vi-mode
+
+	kubectl 
+	emoji 
+	encode64 
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -101,6 +114,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+export FZF_DEFAULT_OPTS="--layout=reverse --inline-info --height=80%"
+
 
 source ~/.zsh_aliases
 
