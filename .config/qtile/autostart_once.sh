@@ -1,2 +1,2 @@
 #!/bin/sh
-vmtoolsd -n vmusr
+vmtoolsd -n vmusr &
