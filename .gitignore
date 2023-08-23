@@ -2,3 +2,12 @@
 .bash*
 .cache/
 **/__pycache__/
+.IdentityService
+.ServiceHub
+.Xauthority
+.azure
+.cargo
+.config/JetBrains
+.config/QtProject.conf
+.config/StorageExplorer
+
