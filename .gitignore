@@ -16,4 +16,19 @@
 .npm
 .nuget
 .nvm
+.config/autostart
+.config/cef_user_data
+.config/dconf
+.config/gedit
+.config/google-chrome
+.config/htop
+.config/jgit
+.config/k9s
+.config/lvim/lazy-lock.json
+.config/menus
+.fehbg
+.gitconfig
+.java
+.jbr
+.lessht
 
