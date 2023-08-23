@@ -32,11 +32,22 @@ import subprocess
 
 mod = "mod4"
 terminal = guess_terminal()
+outer_gaps = 4
 
 @hook.subscribe.startup_once
 def autostart_once():
     subprocess.run('/home/bob/.config/qtile/autostart_once.sh')
 
+@hook.subscribe.layout_change
+def handle_layout_change(lay, grp):
+    if lay.name == "max":
+        outer_gaps = 0
+    else:
+        outer_gaps = 4
+
+    grp.qtile.screens[0].left = bar.Gap(outer_gaps)
+    grp.qtile.screens[0].right = bar.Gap(outer_gaps)
+    grp.qtile.screens[0].bottom = bar.Gap(outer_gaps)
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -108,7 +119,11 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
+    layout.Columns(
+        border_focus_stack=["#d75f5f", "#8f3d3d"], 
+        border_width=2,
+        margin = 4
+    ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -132,7 +147,7 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        bottom=bar.Bar(
+        top=bar.Bar(
             [
                 widget.CurrentLayout(),
                 widget.GroupBox(),
@@ -156,6 +171,9 @@ screens = [
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
+        left = bar.Gap(outer_gaps),
+        right = bar.Gap(outer_gaps),
+        bottom = bar.Gap(outer_gaps)
     ),
 ]
 
