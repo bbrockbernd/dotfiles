@@ -10,4 +10,10 @@
 .config/JetBrains
 .config/QtProject.conf
 .config/StorageExplorer
+.kube
+.minikube
+.mono
+.npm
+.nuget
+.nvm
 
