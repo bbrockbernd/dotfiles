@@ -25,7 +25,7 @@
 # SOFTWARE.
 
 from libqtile import bar, layout, widget, hook
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 import subprocess
@@ -92,7 +92,7 @@ keys = [
     Key([mod], "f", lazy.next_layout())
 ]
 
-groups = [Group(i) for i in "123456789"]
+groups = [Group(i) for i in "1234567890"]
 
 for i in groups:
     keys.extend(
@@ -111,12 +111,19 @@ for i in groups:
                 lazy.window.togroup(i.name, switch_group=True),
                 desc="Switch to & move focused window to group {}".format(i.name),
             ),
-            # Or, use below if you prefer not to switch to that group.
-            # # mod1 + shift + letter of group = move focused window to group
-            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-            #     desc="move focused window to group {}".format(i.name)),
         ]
     )
+
+# groups.append(
+#     ScratchPad("scratchpad", [
+#         DropDown("passwords", "keepassxc")
+#     ])
+# )
+
+# keys.append(
+#     Key([mod, "control"], "p", lazy.group["scratchpad"].dropdown_toggle("passwords"))
+# )
+
 
 layouts = [
     layout.Columns(
@@ -149,8 +156,8 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.CurrentLayout(),
                 widget.GroupBox(),
+                widget.CurrentLayout(),
                 widget.Prompt(),
                 widget.WindowName(),
                 widget.Chord(

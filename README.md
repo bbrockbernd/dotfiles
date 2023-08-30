@@ -10,6 +10,19 @@
 ### Install
 - Use ext4 file system
 - pipewire
+- lightdm
+- qtile
+- alacritty
+- dunst
+- feh
+- fzf
+- networkmanager
+- oh-my-zsh-plugin-autosuggestions
+- oh-my-zsh-plugin-syntax-highlighting
+- p7zip
+- rofi
+- gnome-keyring
+- variety
 
 ### Vmtools
 - install vmtools: sudo pacman -S open-vm-tools
