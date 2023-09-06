@@ -9,7 +9,7 @@
 ## Vmware setup
 ### Install
 - Use ext4 file system
-- pipewire
+- pulse audio
 - lightdm
 - qtile
 - alacritty
