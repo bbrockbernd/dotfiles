@@ -23,6 +23,7 @@
 - rofi
 - gnome-keyring
 - variety
+- xinput
 
 ### Vmtools
 - install vmtools: sudo pacman -S open-vm-tools
