@@ -71,7 +71,8 @@ keys = [
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-    Key([mod], "d", lazy.spawn("rofi -show drun -show-icons"), desc="Reset all window sizes"),
+    Key([mod], "d", lazy.spawn("rofi -show drun -show-icons"), desc="Start application"),
+    Key([mod], "b", lazy.spawn("/home/bob/.config/rofi/rofi-bluetooth"), desc="Bluetooth"),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with

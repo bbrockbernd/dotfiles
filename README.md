@@ -6,6 +6,9 @@
 - clone this repo: git clone --bare https://github.com/bbrockbernd/dotfiles.git $HOME/.cfg
 - dotfiles checkout -f
 
+### Store git credentials
+git config --global credential.helper /usr/lib/git-core/git-credential-libsecret
+
 ## Vmware setup
 ### Install
 - Use ext4 file system
@@ -24,9 +27,12 @@
 - gnome-keyring
 - variety
 - xinput
+- bluez
+- bluez-utils
 
 ### Vmtools
 - install vmtools: sudo pacman -S open-vm-tools
 - install deps: sudo pacman -Su xf86-input-vmmouse xf86-video-vmware mesa gtk2 gtkmm
 - add kernel modules (/etc/mkinitcpio.conf): MODULES=(vsock vmw_vsock_vmci_transport vmw_balloon vmw_vmci vmgfx)
+
 
