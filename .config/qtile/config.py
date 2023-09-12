@@ -28,6 +28,7 @@ from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
+from Slash import *
 import subprocess
 
 mod = "mod4"
@@ -42,12 +43,15 @@ def autostart_once():
 def handle_layout_change(lay, grp):
     if lay.name == "max":
         outer_gaps = 0
+        bar_mar = [0, 0, 0, 0]
     else:
         outer_gaps = 4
+        bar_mar = bar_margin
 
     grp.qtile.screens[0].left = bar.Gap(outer_gaps)
     grp.qtile.screens[0].right = bar.Gap(outer_gaps)
     grp.qtile.screens[0].bottom = bar.Gap(outer_gaps)
+    grp.qtile.screens[0].top.margin = bar_mar
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -148,36 +152,37 @@ layouts = [
 
 widget_defaults = dict(
     font="sans",
-    fontsize=12,
+    fontsize=15,
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        top=bar.Bar(
-            [
-                widget.GroupBox(disable_drag=True),
-                widget.CurrentLayout(),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                widget.TextBox("default config", name="default"),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
-                widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
-                widget.QuickExit(),
-            ],
-            24,
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
-        ),
+        # top=bar.Bar(
+        #     [
+        #         widget.GroupBox(disable_drag=True),
+        #         widget.CurrentLayout(),
+        #         widget.Prompt(),
+        #         widget.WindowName(),
+        #         widget.Chord(
+        #             chords_colors={
+        #                 "launch": ("#ff0000", "#ffffff"),
+        #             },
+        #             name_transform=lambda name: name.upper(),
+        #         ),
+        #         widget.TextBox("default config", name="default"),
+        #         # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
+        #         # widget.StatusNotifier(),
+        #         widget.Systray(),
+        #         widget.Clock(format="%Y-%m-%d %a %I:%M %p"),
+        #         widget.QuickExit(),
+        #     ],
+        #     24,
+        #     # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
+        #     # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+        # ),
+        top = get_bar(),
         left = bar.Gap(outer_gaps),
         right = bar.Gap(outer_gaps),
         bottom = bar.Gap(outer_gaps)

@@ -29,6 +29,10 @@ git config --global credential.helper /usr/lib/git-core/git-credential-libsecret
 - xinput
 - bluez
 - bluez-utils
+- p7zip
+- upower (python)
+- dbus_next (python)
+- iwlib (python)
 
 ### Vmtools
 - install vmtools: sudo pacman -S open-vm-tools

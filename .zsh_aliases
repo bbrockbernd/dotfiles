@@ -1,3 +1,9 @@
 alias lll="ls -lah"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
 alias setupmk="(cd ~/IdeaProjects/infra-tf && cat ~/.tokens/tk.txt | ~/IdeaProjects/infra-tf/setup-minikube.sh)"
+alias fl="fc-list \
+    | grep -ioE \": [^:]*$1[^:]+:\" \
+    | sed -E 's/(^: |:)//g' \
+    | tr , \\n \
+    | sort \
+    | uniq"
