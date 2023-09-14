@@ -266,6 +266,141 @@ def init_widgets_list():
         #     prefix_long_break=' ',
         #     prefix_paused=' ',
         #     **powerline,
+        # )
+        widget.TextBox(
+            background=color[1],
+            foreground=color[0],
+            text="",
+            # mouse_callbacks={'Button1': lambda: qtile.function(session_widget)},
+            ),
+        widget.Backlight(
+                background=color[1],
+                foreground=color[0],
+                backlight_name='intel_backlight',
+                brightness_file='brightness',
+                max_brightness_file='max_brightness',
+                **powerline,
+                ),
+        widget.TextBox( 
+            background=color[0],
+            text="",
+            foreground=color[1],
+            mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol'), 'Button4': lambda: qtile.spawn(
+                "amixer -q set Master 5%+ && dunstify -a Volume ' '$(pamixer --get-volume-human) -h int:value:$(pamixer --get-volume)",
+                shell=True), 'Button5': lambda: qtile.spawn(
+                "amixer -q set Master 5%- && dunstify -a Volume ' '$(pamixer --get-volume-human) -h int:value:$(pamixer --get-volume)",
+                shell=True)},
+            **powerline,
+        ),
+        widget.Volume(
+            background=color[0],
+            foreground=color[1],
+            **powerline,
+                ),
+        widget.Clock(
+            foreground=color[0],
+            format="%a %d %H:%M",
+            update_interval=1,
+            background=color[1],
+            # mouse_callbacks={'Button1': lambda: qtile.function(calendar_notification),
+            #                  'Button4': lambda: qtile.function(calendar_notification_prev),
+            #                  'Button5': lambda: qtile.function(calendar_notification_next)},
+            **powerline,
+        ),
+        ## Network
+        widget.WidgetBox(
+            background=color[0],
+            text_closed=wifi_icon,
+            text_open='',
+            foreground=color[2],
+            **powerline,
+            widgets=[
+                widget.TextBox(
+                    background=color[0],
+                    text='',
+                    foreground=color[1],
+                    # mouse_callbacks={'Button1': lambda: qtile.function(network_widget)},
+                    **powerline,
+                ),
+                widget.TextBox(
+                    background=color[1],
+                    text=private_ip,
+                    foreground=color[0],
+                    # mouse_callbacks={'Button1': lambda: qtile.function(network_widget)},
+                    **powerline,
+                ),
+                widget.TextBox(
+                    background=color[0],
+                    text='',
+                    foreground=color[1],
+                    # mouse_callbacks={'Button1': lambda: qtile.function(network_widget)},
+                    **powerline,
+                ),
+                widget.TextBox(
+                    background=color[1],
+                    text=public_ip,
+                    foreground=color[0],
+                    # mouse_callbacks={'Button1': lambda: qtile.function(network_widget)},
+                    **powerline,
+                ),
+                # widget.TextBox(
+                #     background=color[0],
+                #     text=wifi_icon,
+                #     foreground=color[3],
+                #     # mouse_callbacks={'Button1': lambda: qtile.function(network_widget)},
+                #     **powerline,
+                # ),
+            ]
+        ),
+        widget.Wlan(
+            interface=wifi,
+            format='{essid}',
+            disconnected_message='',
+            foreground=color[1],
+            width=widget_width,
+            scroll=True,
+            scroll_repeat=True,
+            scroll_interval=0.1,
+            scroll_step=1,
+            update_interval=1,
+            # mouse_callbacks={'Button1': lambda: qtile.function(network_widget)},
+            background=color[0],
+        ),
+        widget.Wlan(
+            background=color[0],
+            interface=wifi,
+            format='{percent:2.0%}',
+            disconnected_message='',
+            foreground=color[1],
+            # mouse_callbacks={'Button1': lambda: qtile.function(network_widget)},
+            **powerline,
+        ),
+        # widget.TextBox(
+        #   background=color[2],
+        #   text="",
+        #   foreground=color[0],
+        #   **powerline,
+        # ),
+        # widget.KeyboardLayout(
+        #   background=color[2],
+        #   configured_keyboards=['us intl', 'latam'],
+        #   foreground=color[0],
+        #   **powerline,
+        # ),
+        # widget.ALSAWidget(
+        #     background=color[1],
+        #     device='Master',
+        #     bar_colour_high=color[0],
+        #     bar_colour_loud=color[0],
+        #     bar_colour_normal=color[0],
+        #     bar_colour_mute=color[0],
+        #     hide_interval=5,
+        #     update_interval=0.1,
+        #     bar_width=80,
+        #     mode='bar',
+        #     foreground=color[5],
+        #     text_format=' ',
+        #     **powerline,
         # ),
         widget.OpenWeather(
             background=color[1],
@@ -308,122 +443,6 @@ def init_widgets_list():
             update_interval=600,
             **powerline,
         ),
-        ## Network
-        widget.WidgetBox(
-            background=color[0],
-            text_closed=wifi_icon,
-            text_open='',
-            foreground=color[3],
-            **powerline,
-            widgets=[
-                widget.TextBox(
-                    background=color[0],
-                    text='',
-                    foreground=color[3],
-                    # mouse_callbacks={'Button1': lambda: qtile.function(network_widget)},
-                    **powerline,
-                ),
-                widget.TextBox(
-                    background=color[2],
-                    text=private_ip,
-                    foreground=color[0],
-                    # mouse_callbacks={'Button1': lambda: qtile.function(network_widget)},
-                    **powerline,
-                ),
-                widget.TextBox(
-                    background=color[0],
-                    text='',
-                    foreground=color[3],
-                    # mouse_callbacks={'Button1': lambda: qtile.function(network_widget)},
-                    **powerline,
-                ),
-                widget.TextBox(
-                    background=color[4],
-                    text=public_ip,
-                    foreground=color[0],
-                    # mouse_callbacks={'Button1': lambda: qtile.function(network_widget)},
-                    **powerline,
-                ),
-                widget.TextBox(
-                    background=color[0],
-                    text=wifi_icon,
-                    foreground=color[3],
-                    # mouse_callbacks={'Button1': lambda: qtile.function(network_widget)},
-                    **powerline,
-                ),
-            ]
-        ),
-        widget.Wlan(
-            interface=wifi,
-            format='{essid}',
-            disconnected_message='',
-            foreground=color[3],
-            width=widget_width,
-            scroll=True,
-            scroll_repeat=True,
-            scroll_interval=0.1,
-            scroll_step=1,
-            update_interval=1,
-            # mouse_callbacks={'Button1': lambda: qtile.function(network_widget)},
-            background=color[0],
-        ),
-        widget.Wlan(
-            background=color[0],
-            interface=wifi,
-            format='{percent:2.0%}',
-            disconnected_message='',
-            foreground=color[3],
-            # mouse_callbacks={'Button1': lambda: qtile.function(network_widget)},
-            **powerline,
-        ),
-        # widget.TextBox(
-        #   background=color[2],
-        #   text="",
-        #   foreground=color[0],
-        #   **powerline,
-        # ),
-        # widget.KeyboardLayout(
-        #   background=color[2],
-        #   configured_keyboards=['us intl', 'latam'],
-        #   foreground=color[0],
-        #   **powerline,
-        # ),
-        widget.TextBox(
-            background=color[0],
-            text="",
-            foreground=color[1],
-            mouse_callbacks={'Button1': lambda: qtile.spawn('pavucontrol'), 'Button4': lambda: qtile.spawn(
-                "amixer -q set Master 5%+ && dunstify -a Volume ' '$(pamixer --get-volume-human) -h int:value:$(pamixer --get-volume)",
-                shell=True), 'Button5': lambda: qtile.spawn(
-                "amixer -q set Master 5%- && dunstify -a Volume ' '$(pamixer --get-volume-human) -h int:value:$(pamixer --get-volume)",
-                shell=True)},
-            **powerline,
-        ),
-        # widget.ALSAWidget(
-        #     background=color[5],
-        #     device='Master',
-        #     bar_colour_high=color[0],
-        #     bar_colour_loud=color[0],
-        #     bar_colour_normal=color[0],
-        #     bar_colour_mute=color[0],
-        #     hide_interval=5,
-        #     update_interval=0.1,
-        #     bar_width=80,
-        #     mode='bar',
-        #     foreground=color[5],
-        #     text_format=' ',
-        #     **powerline,
-        # ),
-        widget.Clock(
-            foreground=color[0],
-            format="%a %d %H:%M",
-            update_interval=1,
-            background=color[1],
-            # mouse_callbacks={'Button1': lambda: qtile.function(calendar_notification),
-            #                  'Button4': lambda: qtile.function(calendar_notification_prev),
-            #                  'Button5': lambda: qtile.function(calendar_notification_next)},
-            **powerline,
-        ),
         widget.UPowerWidget(
             border_charge_colour=color[3],
             border_colour=secondary_color[0],
@@ -449,25 +468,24 @@ def init_widgets_list():
     return widgets_list
 
 
-def screen1_widgets():
-    widgets_screen1 = init_widgets_list()
-    return widgets_screen1
+# def screen1_widgets():
+#     widgets_screen1 = init_widgets_list()
+#     return widgets_screen1
 
 
 # def init_screens_bottom():
 #     return [Screen(bottom=bar.Bar(widgets=screen1_widgets(), size=bar_size, background=transparent, margin=bar_margin))]
 
-
+widgets_list = init_widgets_list()
 # def init_screens_top():
 #     return [Screen(top=bar.Bar(widgets=screen1_widgets(), size=bar_size, background=transparent, margin=bar_margin))]
 
-def get_bar():
-    return bar.Bar(widgets=screen1_widgets(), size=bar_size, background=transparent, margin=bar_margin)
+def get_bar(margin=bar_margin, widgets=widgets_list):
+    return bar.Bar(widgets=widgets, size=bar_size, background=transparent, margin=margin)
 
 # if bar_position == "top":
 #     screens = init_screens_top()
 # else:
 #     screens = init_screens_bottom()
 
-widgets_list = init_widgets_list()
 # widgets_screen1 = screen1_widgets()

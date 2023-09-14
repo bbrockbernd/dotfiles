@@ -27,6 +27,7 @@
 from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
+from libqtile.core.manager import Qtile
 from libqtile.utils import guess_terminal
 from Slash import *
 import subprocess
@@ -48,10 +49,13 @@ def handle_layout_change(lay, grp):
         outer_gaps = 4
         bar_mar = bar_margin
 
-    grp.qtile.screens[0].left = bar.Gap(outer_gaps)
-    grp.qtile.screens[0].right = bar.Gap(outer_gaps)
-    grp.qtile.screens[0].bottom = bar.Gap(outer_gaps)
-    grp.qtile.screens[0].top.margin = bar_mar
+    grp.screen.left = bar.Gap(outer_gaps)
+    grp.screen.right = bar.Gap(outer_gaps)
+    grp.screen.bottom = bar.Gap(outer_gaps)
+    grp.screen.top._initial_margin = bar_mar
+    grp.screen.top._configure(qtile, grp.screen, reconfigure=True)
+    grp.layout_all()
+
 
 keys = [
     # A list of available commands that can be bound to keys can be found
