@@ -223,6 +223,11 @@ def init_widgets_list():
             background=color[0],
             **powerline,
         ),
+        widget.Systray(
+            background=color[0],
+            foreground=color[1],
+            **powerline,
+        ),
         # widget.TextBox(
         #     background=color[3],
         #     text="",
@@ -460,9 +465,9 @@ def init_widgets_list():
         ),
         ## Lock, Logout, Poweroff
         widget.TextBox(
-            background=color[6],
+            background=color[1],
             foreground=color[0],
-            text="",
+            text=" ",
             # mouse_callbacks={'Button1': lambda: qtile.function(session_widget)},
         )]
     return widgets_list
@@ -481,7 +486,7 @@ widgets_list = init_widgets_list()
 #     return [Screen(top=bar.Bar(widgets=screen1_widgets(), size=bar_size, background=transparent, margin=bar_margin))]
 
 def get_bar(margin=bar_margin, widgets=widgets_list):
-    return bar.Bar(widgets=widgets, size=bar_size, background=transparent, margin=margin)
+    return bar.Bar(widgets=widgets, size=bar_size, background=color[0], margin=margin, border_width=[0, 0, 0, 0])
 
 # if bar_position == "top":
 #     screens = init_screens_top()
