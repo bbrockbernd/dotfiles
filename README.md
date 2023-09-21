@@ -58,3 +58,5 @@ git config --global credential.helper /usr/lib/git-core/git-credential-libsecret
 - Dual widget groupbox
 - font size alacritty second screen
 - optimus-manager to systray
+- optmius-manager power management
+
