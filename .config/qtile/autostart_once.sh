@@ -2,7 +2,7 @@
 vmtoolsd -n vmusr &
 variety &
 picom &
-xinput set-prop 14 349 1 & # tappin enabled
-xinput set-prop 14 322 1 & # natural scrolling
-xinput set-prop 14 362 1 & # middle emulation
+xinput set-prop 14 "libinput Tapping Enabled" 1 & # tappin enabled
+xinput set-prop 14 "libinput Natural Scrolling Enabled" 1 & # natural scrolling
+xinput set-prop 14 "libinput Middle Emulation Enabled" 1 & # middle emulation
 xbindkeys &
