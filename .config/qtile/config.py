@@ -28,6 +28,7 @@ from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
 from libqtile.core.manager import Qtile
+from libqtile.log_utils import logger
 from libqtile.utils import guess_terminal
 from Slash import *
 import subprocess
@@ -52,7 +53,7 @@ def handle_layout_change(lay, grp):
     grp.screen.left = bar.Gap(outer_gaps)
     grp.screen.right = bar.Gap(outer_gaps)
     grp.screen.bottom = bar.Gap(outer_gaps)
-    grp.screen.top._initial_margin = bar_mar
+    grp.screen.top.margin = bar_mar
     grp.screen.top._configure(qtile, grp.screen, reconfigure=True)
     grp.layout_all()
 
@@ -81,6 +82,7 @@ keys = [
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     Key([mod], "d", lazy.spawn("rofi -show drun -show-icons"), desc="Start application"),
     Key([mod], "b", lazy.spawn("/home/bob/.config/rofi/rofi-bluetooth"), desc="Bluetooth"),
+    Key([mod, "shift"], "s", lazy.spawn("flameshot gui"), desc="Screenshot"),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
