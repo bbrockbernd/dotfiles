@@ -51,12 +51,14 @@ git config --global credential.helper /usr/lib/git-core/git-credential-libsecret
 - install deps: sudo pacman -Su xf86-input-vmmouse xf86-video-vmware mesa gtk2 gtkmm
 - add kernel modules (/etc/mkinitcpio.conf): MODULES=(vsock vmw_vsock_vmci_transport vmw_balloon vmw_vmci vmgfx)
 
+### Optimus manager power management:
+
+
 # TODO
 ## Qtile
 - Fix groups to screens
 - Detect screen connection
 - Dual widget groupbox
 - font size alacritty second screen
-- optimus-manager to systray
 - optmius-manager power management
 
