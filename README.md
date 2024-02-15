@@ -31,6 +31,7 @@ git config --global credential.helper /usr/lib/git-core/git-credential-libsecret
 - bluez-utils
 - p7zip
 - brightnessctl
+- udiskie
 
 ### Multiscreen
 - arander
