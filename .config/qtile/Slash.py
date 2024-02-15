@@ -297,7 +297,7 @@ def init_widgets_list():
                 shell=True)},
             **powerline,
         ),
-        widget.Volume(
+        widget.PulseVolume(
             background=color[0],
             foreground=color[1],
             **powerline,

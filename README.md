@@ -32,6 +32,7 @@ git config --global credential.helper /usr/lib/git-core/git-credential-libsecret
 - p7zip
 - brightnessctl
 - udiskie
+- python-pulsectl-asyncio
 
 ### Multiscreen
 - arander
