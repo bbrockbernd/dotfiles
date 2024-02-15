@@ -7,3 +7,4 @@ xinput set-prop "SYNA307B:00 06CB:CD46 Touchpad" "libinput Natural Scrolling Ena
 xinput set-prop "SYNA307B:00 06CB:CD46 Touchpad" "libinput Middle Emulation Enabled" 1 & # middle emulation
 xbindkeys &
 optimus-manager-qt &
+udiskie &
